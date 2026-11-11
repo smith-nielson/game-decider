@@ -1,0 +1,74 @@
+{
+  "PEAK": {
+    "sgdbGameId": 5492144,
+    "sgdbGameName": "PEAK",
+    "logoId": 161074,
+    "language": "en",
+    "file": "peak.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/3bdaa1996711a8026cf8db03a83169ca.png",
+    "author": "PaperFalcon"
+  },
+  "Lethal Company": {
+    "sgdbGameId": 5339777,
+    "sgdbGameName": "Lethal Company",
+    "logoId": 120025,
+    "language": "en",
+    "file": "lethal-company.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/389ce663ff7783845bf2d0c099dbf3a3.png",
+    "author": "BeninjaLIVE"
+  },
+  "Super Battle Golf": {
+    "sgdbGameId": 5518569,
+    "sgdbGameName": "Super Battle Golf",
+    "logoId": 164503,
+    "language": "en",
+    "file": "super-battle-golf.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/2b70ad17ae3a25ebd00add13d2515da6.png",
+    "author": "r_dsgnd"
+  },
+  "RV There Yet?": {
+    "sgdbGameId": 5504607,
+    "sgdbGameName": "RV There Yet?",
+    "logoId": 154413,
+    "language": "en",
+    "file": "rv-there-yet.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/3173e129640432f5104068f42b7befbf.png",
+    "author": "BigHungryChicken"
+  },
+  "R.E.P.O.": {
+    "sgdbGameId": 5478421,
+    "sgdbGameName": "R.E.P.O.",
+    "logoId": 166464,
+    "language": "en",
+    "file": "r-e-p-o.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/a62a26ff6ee2a3723c9c35fd2acb81ca.png",
+    "author": "LuminoOwO"
+  },
+  "Minecraft": {
+    "sgdbGameId": 38365,
+    "sgdbGameName": "Minecraft",
+    "logoId": 121068,
+    "language": "en",
+    "file": "minecraft.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/827536b047c7eb4378d007dfb5c8b811.png",
+    "author": "crystalpepsi"
+  },
+  "Risk of Rain 2": {
+    "sgdbGameId": 18260,
+    "sgdbGameName": "Risk of Rain 2",
+    "logoId": 7545,
+    "language": "en",
+    "file": "risk-of-rain-2.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/2f10c1578a0706e06b6d7db6f0b4a6af.png",
+    "author": "RealSayakaMaizono"
+  },
+  "Escape the Backrooms": {
+    "sgdbGameId": 5323165,
+    "sgdbGameName": "Escape the Backrooms",
+    "logoId": 88824,
+    "language": "en",
+    "file": "escape-the-backrooms.png",
+    "sourceUrl": "https://cdn2.steamgriddb.com/logo/38a978f88b70aa7322c6f2f7eb59751b.png",
+    "author": "Oldmangames"
+  }
+}

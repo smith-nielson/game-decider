@@ -6,20 +6,23 @@
 <title>Game Night Jackpot</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <div class="floor">
 
-    <div class="sign">
-      <span class="sign-word sign-word--pink">GAME</span>
-      <span class="sign-word sign-word--cyan">NIGHT</span>
-      <span class="sign-word sign-word--gold">JACKPOT</span>
-    </div>
-
     <div class="cabinet">
+      <div class="topper">
+        <div class="topper-bulbs" aria-hidden="true"></div>
+        <div class="sign">
+          <span class="sign-word sign-word--pink">GAME</span>
+          <span class="sign-word sign-word--cyan">NIGHT</span>
+          <span class="sign-word sign-word--gold">JACKPOT</span>
+        </div>
+      </div>
+
       <div class="chase chase--top" aria-hidden="true"></div>
       <div class="chase chase--bottom" aria-hidden="true"></div>
 
@@ -29,20 +32,18 @@
 
       <div class="reels" id="reels">
         <div class="reel-window">
-          <div class="payline" aria-hidden="true"></div>
           <div class="reel-strip" id="reel-0"></div>
           <div class="reel-shade"></div>
         </div>
         <div class="reel-window">
-          <div class="payline" aria-hidden="true"></div>
           <div class="reel-strip" id="reel-1"></div>
           <div class="reel-shade"></div>
         </div>
         <div class="reel-window">
-          <div class="payline" aria-hidden="true"></div>
           <div class="reel-strip" id="reel-2"></div>
           <div class="reel-shade"></div>
         </div>
+        <div class="payline" aria-hidden="true"></div>
       </div>
 
       <div class="controls">
@@ -50,13 +51,14 @@
           <span class="spin-btn-label">SPIN</span>
         </button>
       </div>
-    </div>
 
-    <div class="lever-rail" id="leverRail" role="button" tabindex="0" aria-label="Pull lever to spin">
-      <div class="lever-track">
-        <div class="lever-handle" id="leverHandle"></div>
+      <div class="lever-rail" id="leverRail" role="button" tabindex="0" aria-label="Pull lever to spin">
+        <div class="lever-mount-plate" aria-hidden="true"></div>
+        <div class="lever-track">
+          <div class="lever-handle" id="leverHandle"></div>
+        </div>
+        <span class="lever-caption">PULL</span>
       </div>
-      <span class="lever-caption">PULL</span>
     </div>
 
     <div class="result" id="result" aria-live="polite"></div>

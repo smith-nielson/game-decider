@@ -9,7 +9,7 @@
   --chrome-hi: #f2f2f2;
   --chrome-lo: #3c3c42;
   --chrome-shadow: #101014;
-  --tile-h: 112px;
+  --tile-h: 136px;
 }
 
 * { box-sizing: border-box; }
@@ -44,24 +44,23 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.2rem;
-  padding: 3.5rem 1.5rem 5rem;
+  gap: 2.6rem;
+  padding: 3.8rem 1.5rem 5rem;
   min-height: 100vh;
 }
 
 /* ---------- Marquee title ---------- */
 
 .sign {
-  font-family: 'Monoton', cursive;
+  font-family: 'Bungee', cursive;
   text-align: center;
-  line-height: 1.25;
+  line-height: 1.2;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6rem 1rem;
-  font-size: clamp(1.8rem, 6vw, 4rem);
-  letter-spacing: 0.04em;
-  padding: 0 0.5rem;
+  gap: 0.4rem 0.7rem;
+  font-size: clamp(1.3rem, 4.2vw, 2.6rem);
+  letter-spacing: 0.01em;
 }
 
 .sign-word { animation: flicker 4.5s infinite; }
@@ -77,56 +76,89 @@ body::before {
   96% { opacity: 1; }
 }
 
+/* Lit header sign bolted to the top of the cabinet, overlapping its upper
+   edge slightly so it reads as a topper rather than text floating in the
+   page background. */
+.topper {
+  position: relative;
+  width: fit-content;
+  max-width: 94%;
+  margin: -2.6rem auto 1.6rem;
+  padding: 0.9rem 1.6rem 0.7rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #230910 0%, #0a0303 100%);
+  border: 3px solid transparent;
+  border-image: linear-gradient(145deg, #fff3b0, var(--neon-gold) 35%, #7a5a12 60%, #fff3b0 100%) 1;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 204, 51, 0.1),
+    0 0 26px rgba(255, 204, 51, 0.3),
+    0 14px 24px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.topper-bulbs {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 5px;
+  height: 5px;
+  background-image: radial-gradient(circle, var(--neon-gold) 0 2px, transparent 2.5px);
+  background-size: 16px 5px;
+  background-repeat: repeat-x;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 3px var(--neon-gold));
+}
+
 /* ---------- Cabinet ---------- */
 
 .cabinet {
   position: relative;
-  width: min(92vw, 640px);
-  padding: 2.4rem 1.8rem 2.2rem;
-  border-radius: 28px;
-  background: linear-gradient(160deg, var(--chrome-lo) 0%, #1c1c20 45%, var(--chrome-lo) 100%);
-  border: 3px solid #050507;
+  width: min(94vw, 760px);
+  padding: 2.8rem 2.2rem 2.6rem;
+  border-radius: 32px;
+  background: linear-gradient(155deg, var(--velvet) 0%, var(--velvet-dark) 40%, #0a0204 75%, var(--velvet-dark) 100%);
+  border: 6px solid transparent;
+  border-image: linear-gradient(145deg, #fff3b0, var(--neon-gold) 35%, #7a5a12 60%, #fff3b0 100%) 1;
   box-shadow:
-    0 0 0 2px rgba(255,255,255,0.05) inset,
-    0 25px 60px -15px rgba(0,0,0,0.8),
-    0 0 50px rgba(255,47,208,0.08);
+    inset 0 0 0 2px rgba(255, 204, 51, 0.12),
+    inset 0 2px 0 rgba(255, 255, 255, 0.05),
+    0 25px 60px -15px rgba(0, 0, 0, 0.85),
+    0 0 60px rgba(255, 204, 51, 0.12);
 }
 
 .chase {
   position: absolute;
-  left: 18px;
-  right: 18px;
-  height: 14px;
-  display: flex;
-  justify-content: space-between;
-}
-.chase--top { top: 12px; }
-.chase--bottom { bottom: 12px; }
-
-.chase::before, .chase::after { content: ""; flex: 1; }
-
-.chase {
-  background-image: radial-gradient(circle, var(--neon-gold) 0 3px, transparent 4px);
-  background-size: 28px 14px;
+  left: 20px;
+  right: 20px;
+  height: 16px;
+  background-image: radial-gradient(circle, var(--neon-gold) 0 3.5px, transparent 5px);
+  background-size: 32px 16px;
   background-repeat: repeat-x;
-  animation: chase 1s steps(2) infinite;
+  animation: chase-move 0.9s linear infinite;
   filter: drop-shadow(0 0 4px var(--neon-gold));
 }
+.chase--top { top: 14px; }
+.chase--bottom { bottom: 14px; }
 
-@keyframes chase {
-  0%   { background-position: 0 0; opacity: 1; }
-  50%  { background-position: 14px 0; opacity: 0.55; }
-  100% { background-position: 28px 0; opacity: 1; }
+/* One full dot-spacing per loop so the pattern scrolls seamlessly instead
+   of just flickering in place; sped up while a spin is in flight. */
+@keyframes chase-move {
+  from { background-position: 0 0; }
+  to   { background-position: 32px 0; }
+}
+
+.cabinet.spinning .chase {
+  animation-duration: 0.18s;
 }
 
 .cabinet-head {
   text-align: center;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.6rem;
 }
 .cabinet-head-text {
   font-weight: 600;
   letter-spacing: 0.3em;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--neon-gold);
   text-shadow: 0 0 10px rgba(255,204,51,0.7);
 }
@@ -134,10 +166,11 @@ body::before {
 /* ---------- Reels ---------- */
 
 .reels {
+  position: relative;
   display: flex;
-  gap: 0.9rem;
-  padding: 1.2rem;
-  border-radius: 16px;
+  gap: 1.05rem;
+  padding: 1.4rem;
+  border-radius: 18px;
   background: linear-gradient(180deg, var(--velvet-dark), var(--velvet));
   box-shadow: 0 0 0 4px #1a1a1e inset, 0 10px 30px rgba(0,0,0,0.6) inset;
 }
@@ -147,7 +180,7 @@ body::before {
   flex: 1;
   height: calc(var(--tile-h) * 3);
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #050308;
   box-shadow: 0 0 0 2px #000 inset, 0 0 24px rgba(0,0,0,0.9) inset;
 }
@@ -157,7 +190,22 @@ body::before {
   top: 0;
   left: 0;
   width: 100%;
-  will-change: transform;
+  will-change: transform, filter;
+  filter: blur(0px);
+}
+
+.reel-strip.spinning {
+  animation-name: reel-blur;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  /* animation-duration and animation-delay are set per-reel in app.js to match its transform transition */
+}
+
+@keyframes reel-blur {
+  0%   { filter: blur(0px); }
+  8%   { filter: blur(7px); }
+  78%  { filter: blur(6px); }
+  100% { filter: blur(0px); }
 }
 
 .tile {
@@ -171,14 +219,38 @@ body::before {
   padding: 0 0.4rem;
 }
 
+.tile-symbol {
+  width: calc(var(--tile-h) * 0.8);
+  height: calc(var(--tile-h) * 0.8);
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #241a2c 0%, #140d18 75%);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    inset 0 0 16px rgba(255, 204, 51, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
 .tile-icon {
-  font-size: 1.9rem;
+  font-size: 2.3rem;
   line-height: 1;
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
 }
 
+.tile-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.2));
+}
+
 .tile-label {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: #e9e4f0;
@@ -189,22 +261,83 @@ body::before {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  /* Curvature: darkens top/bottom rows so they read as receding around a
+     drum, leaving the center row lit. Glass: a faint diagonal sheen across
+     the whole window to sell it as a physical cabinet, not a flat image. */
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.85) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.85) 100%);
+    linear-gradient(180deg,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.55) 16%,
+      transparent 38%,
+      transparent 62%,
+      rgba(0,0,0,0.55) 84%,
+      rgba(0,0,0,0.92) 100%),
+    linear-gradient(135deg,
+      rgba(255,255,255,0.10) 0%,
+      transparent 20%,
+      transparent 55%,
+      rgba(255,255,255,0.06) 70%,
+      transparent 88%);
 }
 
+/* One continuous band across all three reels, not a box per reel. */
 .payline {
   position: absolute;
   top: 50%;
-  left: 4%;
-  right: 4%;
+  left: 1.4rem;
+  right: 1.4rem;
   height: calc(var(--tile-h) - 6px);
   transform: translateY(-50%);
-  border: 2px solid rgba(255, 204, 51, 0.55);
-  border-radius: 6px;
-  box-shadow: 0 0 14px rgba(255,204,51,0.35) inset;
-  z-index: 3;
+  z-index: 5;
   pointer-events: none;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255, 204, 51, 0.08) 35%,
+    rgba(255, 204, 51, 0.16) 50%,
+    rgba(255, 204, 51, 0.08) 65%,
+    transparent 100%);
+  border-top: 1.5px solid rgba(255, 204, 51, 0.75);
+  border-bottom: 1.5px solid rgba(255, 204, 51, 0.75);
+  box-shadow: 0 0 12px rgba(255, 204, 51, 0.45), inset 0 0 20px rgba(255, 204, 51, 0.12);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.payline::before,
+.payline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform: translateY(-50%);
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  filter: drop-shadow(0 0 4px rgba(255, 204, 51, 0.8));
+}
+
+.payline::before {
+  left: -1rem;
+  border-left: 11px solid rgba(255, 204, 51, 0.9);
+}
+
+.payline::after {
+  right: -1rem;
+  border-right: 11px solid rgba(255, 204, 51, 0.9);
+}
+
+.cabinet.jackpot .payline {
+  animation: payline-flash 0.4s ease-in-out infinite;
+}
+
+@keyframes payline-flash {
+  0%, 100% {
+    border-color: rgba(255, 204, 51, 0.75);
+    box-shadow: 0 0 12px rgba(255, 204, 51, 0.45), inset 0 0 20px rgba(255, 204, 51, 0.12);
+  }
+  50% {
+    border-color: #fff6cf;
+    box-shadow: 0 0 30px rgba(255, 204, 51, 0.95), 0 0 55px rgba(255, 47, 208, 0.5), inset 0 0 32px rgba(255, 204, 51, 0.35);
+  }
 }
 
 /* ---------- Controls ---------- */
@@ -212,18 +345,18 @@ body::before {
 .controls {
   display: flex;
   justify-content: center;
-  margin-top: 1.8rem;
+  margin-top: 2.1rem;
 }
 
 .spin-btn {
   position: relative;
-  padding: 0.95rem 3.2rem;
+  padding: 1.15rem 3.8rem;
   border-radius: 999px;
   border: none;
   cursor: pointer;
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   letter-spacing: 0.12em;
   color: #fff6e8;
   background: radial-gradient(circle at 35% 30%, #ff5f7a, var(--velvet) 70%);
@@ -255,8 +388,8 @@ body::before {
 /* ---------- Lever ---------- */
 
 .lever-rail {
-  position: fixed;
-  right: clamp(0.5rem, 3vw, 2.5rem);
+  position: absolute;
+  right: -34px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -265,12 +398,40 @@ body::before {
   gap: 0.6rem;
   cursor: pointer;
   user-select: none;
+  z-index: 6;
 }
 
+.lever-mount-plate {
+  position: absolute;
+  inset: -16px -12px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #1c1c20, var(--chrome-lo) 45%, #1c1c20 100%);
+  box-shadow:
+    0 0 0 2px #050507,
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 18px rgba(0, 0, 0, 0.55);
+  z-index: -1;
+}
+
+.lever-mount-plate::before,
+.lever-mount-plate::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 35% 30%, #d8d8de, #4a4a52 75%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7) inset;
+}
+.lever-mount-plate::before { top: 6px; }
+.lever-mount-plate::after { bottom: 6px; }
+
 .lever-track {
-  width: 34px;
-  height: 230px;
-  border-radius: 20px;
+  width: 40px;
+  height: 270px;
+  border-radius: 22px;
   background: linear-gradient(90deg, #0a0a0c, #2c2c30, #0a0a0c);
   box-shadow: 0 0 0 3px #000, inset 0 0 12px rgba(0,0,0,0.8);
   position: relative;
@@ -279,10 +440,10 @@ body::before {
 .lever-handle {
   position: absolute;
   left: 50%;
-  bottom: 180px;
+  bottom: 210px;
   transform: translateX(-50%);
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #ff6b8a, var(--velvet) 75%);
   box-shadow: 0 0 0 4px #1a1a1e, 0 0 16px rgba(255,47,208,0.5);
@@ -299,18 +460,18 @@ body::before {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 46px;
+  bottom: 54px;
   transform: translateX(-50%);
-  width: 8px;
-  height: 160px;
+  width: 9px;
+  height: 188px;
   border-radius: 4px;
   background: linear-gradient(90deg, var(--chrome-lo), var(--chrome-hi), var(--chrome-lo));
 }
 
-.lever-rail.pulled .lever-handle { bottom: 6px; }
+.lever-rail.pulled .lever-handle { bottom: 7px; }
 
 .lever-caption {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3em;
   color: var(--neon-cyan);
   text-shadow: 0 0 8px rgba(25,230,230,0.6);
@@ -323,10 +484,10 @@ body::before {
 /* ---------- Result ---------- */
 
 .result {
-  min-height: 3.5rem;
+  min-height: 4rem;
   text-align: center;
-  font-family: 'Monoton', cursive;
-  font-size: clamp(1.2rem, 4.5vw, 2.1rem);
+  font-family: 'Bungee', cursive;
+  font-size: clamp(1.1rem, 4vw, 2rem);
   color: var(--neon-gold);
   text-shadow: 0 0 8px rgba(255,204,51,0.7), 0 0 24px rgba(255,204,51,0.4);
   opacity: 0;
@@ -371,7 +532,7 @@ body::before {
 .coin {
   position: absolute;
   top: -40px;
-  font-size: 1.6rem;
+  font-size: 1.9rem;
   animation: coinFall linear forwards;
   filter: drop-shadow(0 0 6px rgba(255,204,51,0.6));
 }
