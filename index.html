@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Game Night Jackpot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="floor">
+
+    <div class="sign">
+      <span class="sign-word sign-word--pink">GAME</span>
+      <span class="sign-word sign-word--cyan">NIGHT</span>
+      <span class="sign-word sign-word--gold">JACKPOT</span>
+    </div>
+
+    <div class="cabinet">
+      <div class="chase chase--top" aria-hidden="true"></div>
+      <div class="chase chase--bottom" aria-hidden="true"></div>
+
+      <div class="cabinet-head">
+        <span class="cabinet-head-text">◆ TONIGHT'S PICK ◆</span>
+      </div>
+
+      <div class="reels" id="reels">
+        <div class="reel-window">
+          <div class="payline" aria-hidden="true"></div>
+          <div class="reel-strip" id="reel-0"></div>
+          <div class="reel-shade"></div>
+        </div>
+        <div class="reel-window">
+          <div class="payline" aria-hidden="true"></div>
+          <div class="reel-strip" id="reel-1"></div>
+          <div class="reel-shade"></div>
+        </div>
+        <div class="reel-window">
+          <div class="payline" aria-hidden="true"></div>
+          <div class="reel-strip" id="reel-2"></div>
+          <div class="reel-shade"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button class="spin-btn" id="spinBtn" type="button">
+          <span class="spin-btn-label">SPIN</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="lever-rail" id="leverRail" role="button" tabindex="0" aria-label="Pull lever to spin">
+      <div class="lever-track">
+        <div class="lever-handle" id="leverHandle"></div>
+      </div>
+      <span class="lever-caption">PULL</span>
+    </div>
+
+    <div class="result" id="result" aria-live="polite"></div>
+
+  </div>
+
+  <div class="coin-field" id="coinField" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
